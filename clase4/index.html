@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="store"><!-- Define una aplicacion en el tab-->
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/products.js"></script>	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/estilos.css" media="screen" />
+</head>
+
+<body ng-controller="StoreController as store">
+
+<div ng-repeat="product in store.products | orderBy:'name' | limitTo:3" >
+	<!--
+	<h1>Product name {{product.name}}</h1>
+	<h2>Product {{product.price | currency }}</h2>
+	-->
+<!--
+	<div ng-include="'product-title.html'">
+		
+	</div>
+-->
+	<product-title></product-title>
+	<p>Product Description {{product.description}}</p>
+	<img ng-src="{{ product.images[0].full }}" width="42"/>
+
+	<product-panels>
+
+	</product-panels>
+
+		{{ tab }}
+
+	<button type="button" class="btn btn-success" ng-show="product.canPurchase">
+		
+	Add to Cart	</button>
+
+</div>
+	
+
+</body>
+
+
+</html>
